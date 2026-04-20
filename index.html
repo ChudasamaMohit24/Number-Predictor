@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Predictor</title>
+    <style>
+        /* CSS Variables for easy color management */
+        :root {
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-gradient-start: #e0e7ff;
+            --bg-gradient-end: #ede9fe;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --display-bg: #f1f5f9;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-main);
+        }
+
+        /* The Main Card UI */
+        .predictor-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 20px 48px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .predictor-card h2 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .predictor-card p {
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Number Display Area */
+        .number-display {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: var(--display-bg);
+            border-radius: 16px;
+            user-select: none;
+        }
+
+        /* Button Styling */
+        .predict-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .predict-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .predict-btn:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="predictor-card">
+        <h2>Number Predictor</h2>
+        <p>Discover your lucky number today.</p>
+        
+        <div class="number-display" id="numberDisplay">?</div>
+        
+        <button class="predict-btn" id="predictBtn">Predict Now</button>
+    </div>
+
+    <script>
+        const display = document.getElementById('numberDisplay');
+        const button = document.getElementById('predictBtn');
+
+        button.addEventListener('click', () => {
+            // Generate the final predicted number (1-100) instantly
+            const finalNumber = Math.floor(Math.random() * 100) + 1;
+            
+            // Update the UI immediately
+            display.textContent = finalNumber;
+            
+            // Update the button text for subsequent clicks
+            button.textContent = 'Predict Again';
+        });
+    </script>
+</body>
+</html>
